@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FoodController : MonoBehaviour
 {
-   public BoxCollider2D foodgrid;
+     public BoxCollider2D levelBounds;
 
    private void Start()
    {
@@ -10,7 +10,7 @@ public class FoodController : MonoBehaviour
    }
    private void FoodSpawn()
  {
-    Bounds bounds = this.foodgrid.bounds;
+    Bounds bounds = this.levelBounds.bounds;
 
     float x = Random.Range(bounds.min.x,bounds.max.x);
     float y = Random.Range(bounds.min.y,bounds.max.y);
