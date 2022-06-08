@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 
 
-[RequireComponent(typeof(BoxCollider2D))]
+
 public class LevelBounds : MonoBehaviour
 {
     
