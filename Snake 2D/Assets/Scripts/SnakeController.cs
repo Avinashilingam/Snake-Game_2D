@@ -8,12 +8,12 @@ public class SnakeController : MonoBehaviour
  // Snake Movement
 
     private Vector2 movementDir;
-    private Vector2 gridPosition;
+    public Vector2 gridPosition;
     private float gridMoveTimer;
     private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
-    private LevelBounds levelBounds;
+    // private LevelBounds levelBounds;
     private FoodController foodController;
    // private  int defSegmentSize = 4;
     
@@ -97,9 +97,10 @@ public class SnakeController : MonoBehaviour
 
         if(gridMoveTimer >= gridMoveTimerMax)
         {
+            Debug.Log("Inside If");
             gridMoveTimer -= gridMoveTimerMax;
             gridPosition += movementDir;
-
+            // Debug.Log(gridPosition.x + " " + gridPosition.y);
              for(int i = Body.Count-1 ; i > 0 ;  i--)
         {
             Body[i].position = Body[i-1].position;
@@ -138,9 +139,9 @@ public class SnakeController : MonoBehaviour
         Grow();
      }
 
-     if(other.tag == "Bounds")
-     {
-         levelBounds.WrapFunction(gridPosition);
-     }
+    //  if(other.tag == "Bounds")
+    //  {
+    //      levelBounds.WrapFunction(gridPosition);
+    //  }
  }
 }

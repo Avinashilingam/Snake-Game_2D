@@ -1,4 +1,4 @@
-using System.Globalization;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,26 +8,45 @@ using UnityEngine.Events;
 
 
 
-public class LevelBounds 
-{
-    
-    
 
-    public float width = this.width;
-    public float height = this.height;
-    private SnakeController snakeController;
-    public Vector2 gP = snakeController.gridPosition;
+public class LevelBounds : MonoBehaviour
+{    
 
-    public Vector2 WrapFunction(Vector2 gP)
+    public float width; 
+    public float height; 
+    public SnakeController snakeController;
+    private Vector2 gP;
+
+    
+    private void Awake()
     {
-        if(gP.x < 0)
+        width = gameObject.GetComponent<BoxCollider2D>().size.x;
+        // Debug.Log("width is " + width);
+        height = gameObject.GetComponent<BoxCollider2D>().size.y;
+        // Debug.Log("height is "+height);
+        
+        // Debug.Log(gP.x);
+        // snakeController =
+    }
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    private void Update()
+    {
+        gP = snakeController.gridPosition;
+        Debug.Log(gP.x + " " + gP.y);
+        WrapFunction(gP);
+    }
+    public Vector2 WrapFunction(Vector2 gridPosition)
+    {
+        if(gP.x < -18)
         {
-            gP.x = width - 1;
+            gP.x = 18; //gP.x = 37.62 - 1 = 36.62
         }
 
-        if(gP.y < 0)
+        if(gP.y < -15)
         {
-            gP.y = height - 1;
+            gP.y = 15;
         }
 
         return gP;

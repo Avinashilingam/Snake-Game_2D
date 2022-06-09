@@ -165,7 +165,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 39.86, y: 30}
+  m_Size: {x: 37.62, y: 30}
   m_EdgeRadius: 0
 --- !u!4 &293399977
 Transform:
@@ -193,6 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9966aed20a33647b7cbb7916adf02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  width: 0
+  height: 0
+  snakeController: {fileID: 916415532}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +279,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &916415532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1864183183201711787, guid: 2283f39a58483564894e598d5e84db88, type: 3}
+  m_PrefabInstance: {fileID: 1864183183201711785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c871d149174fa654a9d01e90ca575bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2019988289
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315398, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315398, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_LocalPosition.y
