@@ -8,15 +8,15 @@ using UnityEngine.Events;
 
 
 
-public class LevelBounds : MonoBehaviour
+public class LevelBounds 
 {
     
-    public BoxCollider2D levelBounds;
+    
 
     public float width = this.width;
     public float height = this.height;
     private SnakeController snakeController;
-    private Vector2 gP = gridPosition;
+    public Vector2 gP = snakeController.gridPosition;
 
     public Vector2 WrapFunction(Vector2 gP)
     {
