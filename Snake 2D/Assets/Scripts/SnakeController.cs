@@ -13,7 +13,7 @@ public class SnakeController : MonoBehaviour
     private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
-    private BoxCollider2D levelBounds;
+    private LevelBounds levelBounds;
     private FoodController foodController;
    // private  int defSegmentSize = 4;
     
@@ -136,6 +136,11 @@ public class SnakeController : MonoBehaviour
      if(other.tag == "Food")
      {
         Grow();
+     }
+
+     if(other.tag == "Bounds")
+     {
+         levelBounds.WrapFunction(gridPosition);
      }
  }
 }
