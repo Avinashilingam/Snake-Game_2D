@@ -5,18 +5,18 @@ using UnityEngine;
 public class SnakeController : MonoBehaviour
 {
  
- // Snake Movement
-
+    
+ 
+// Snake Parameters
     private Vector2 movementDir;
     public Vector2 gridPosition;
     private float gridMoveTimer;
     private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
-    // private LevelBounds levelBounds;
+    private LevelBounds levelBounds;
     private FoodController foodController;
-   // private  int defSegmentSize = 4;
-    
+   
    
 
     
@@ -24,6 +24,7 @@ public class SnakeController : MonoBehaviour
     {
         Body = new List<Transform>();
         Body.Add(this.transform);
+        
     }
     private void Awake()
     {
@@ -31,17 +32,19 @@ public class SnakeController : MonoBehaviour
         gridMoveTimerMax = 0.25f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
+        levelBounds = this.levelBounds;
+        
         
     }
 
    
-   
+   //Update
    private void Update()
 
     {
        InputHandler();
     }
-    
+    //FixedUpdate
     private void FixedUpdate()
     {
        
@@ -97,13 +100,24 @@ public class SnakeController : MonoBehaviour
 
         if(gridMoveTimer >= gridMoveTimerMax)
         {
-            Debug.Log("Inside If");
+           
             gridMoveTimer -= gridMoveTimerMax;
             gridPosition += movementDir;
-            // Debug.Log(gridPosition.x + " " + gridPosition.y);
+            levelBounds.WrapFunction(gridPosition);
              for(int i = Body.Count-1 ; i > 0 ;  i--)
         {
             Body[i].position = Body[i-1].position;
+        }
+ //Snake Death
+        foreach (var body in Body)
+        {
+            Vector2 BpGridPosition = body.position;
+
+            if (gridPosition == BpGridPosition)
+            {
+                // GameOver
+                Debug.Log("Dead");
+            }
         }
 
         transform.position = new Vector3(gridPosition.x,gridPosition.y);
@@ -139,9 +153,6 @@ public class SnakeController : MonoBehaviour
         Grow();
      }
 
-    //  if(other.tag == "Bounds")
-    //  {
-    //      levelBounds.WrapFunction(gridPosition);
-    //  }
+   
  }
 }
