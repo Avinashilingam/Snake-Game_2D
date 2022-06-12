@@ -43,7 +43,7 @@ public class SnakeController : MonoBehaviour
 
     {
        InputHandler();
-       Debug.Log(" "+ gridPosition.x + " " + gridPosition.y );
+      
     }
     //FixedUpdate
     private void FixedUpdate()
