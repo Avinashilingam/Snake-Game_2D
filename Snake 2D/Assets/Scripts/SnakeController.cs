@@ -5,9 +5,14 @@ using UnityEngine;
 public class SnakeController : MonoBehaviour
 {
  
-    
+    private  enum State
+    {
+        Alive,
+        Dead,
+    }
  
 // Snake Parameters
+    private State state;
     private Vector2 movementDir;
     public Vector2 gridPosition;
     private float gridMoveTimer;
@@ -24,6 +29,7 @@ public class SnakeController : MonoBehaviour
         Body = new List<Transform>();
         Body.Add(this.transform);
         
+        
     }
     private void Awake()
     {
@@ -31,6 +37,7 @@ public class SnakeController : MonoBehaviour
         gridMoveTimerMax = 0.25f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
+        state = State.Alive;
         
         
         
@@ -42,14 +49,33 @@ public class SnakeController : MonoBehaviour
    private void Update()
 
     {
-       InputHandler();
+     switch (state)
+     {
+        case State.Alive:
+         InputHandler();
+            break;
+        case State.Dead:
+            break;
+     }
+     
+       
       
     }
     //FixedUpdate
     private void FixedUpdate()
     {
+       switch (state)
+       {
+        case State.Alive:
+         MovementHandler();
+          break;
+        case State.Dead:
+          break;
+
+       }
+
        
-        MovementHandler();
+        
         
     }
         
@@ -138,7 +164,9 @@ public class SnakeController : MonoBehaviour
             if (gridPosition == BpGridPosition)
             {
                 // GameOver
+                
                 Debug.Log("Dead");
+                state = State.Dead;
             }
         }
 
