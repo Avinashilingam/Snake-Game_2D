@@ -14,7 +14,6 @@ public class SnakeController : MonoBehaviour
     private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
-    private LevelBounds levelBounds;
     private FoodController foodController;
    
    
@@ -32,7 +31,8 @@ public class SnakeController : MonoBehaviour
         gridMoveTimerMax = 0.25f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
-        levelBounds = this.levelBounds;
+        
+        
         
         
     }
@@ -43,12 +43,14 @@ public class SnakeController : MonoBehaviour
 
     {
        InputHandler();
+       Debug.Log(" "+ gridPosition.x + " " + gridPosition.y );
     }
     //FixedUpdate
     private void FixedUpdate()
     {
        
         MovementHandler();
+        
     }
         
        
@@ -103,8 +105,28 @@ public class SnakeController : MonoBehaviour
            
             gridMoveTimer -= gridMoveTimerMax;
             gridPosition += movementDir;
-            levelBounds.WrapFunction(gridPosition);
-             for(int i = Body.Count-1 ; i > 0 ;  i--)
+           //Screen wrapping 
+           //Horizontal wrap  
+             if(gridPosition.x == -19f)
+             {
+                gridPosition.x = 19f;
+             }
+             else if(gridPosition.x == 19f)
+             {
+                gridPosition.x = -19f;
+             }
+
+          //Vertical wrap
+             if(gridPosition.y == -16f)
+              {
+                gridPosition.y = 16f;
+              }
+             else if(gridPosition.y == 16f)
+             {
+                gridPosition.y = -16f;
+             }
+             
+           for(int i = Body.Count-1 ; i > 0 ;  i--)
         {
             Body[i].position = Body[i-1].position;
         }
