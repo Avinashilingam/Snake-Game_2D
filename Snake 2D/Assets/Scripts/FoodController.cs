@@ -4,14 +4,16 @@ using UnityEngine.UI;
 public class FoodController : MonoBehaviour
 {
      public BoxCollider2D foodGrid;
-     public Text ScoreText;
-     private float score;
+     private   float score;
+     
 
+   
+   
    private void Start()
    {
        FoodSpawn();
        score = 0;
-       ScoreText.text = "Score: " + score;
+       
     }
    private void FoodSpawn()
  {
@@ -28,11 +30,23 @@ public class FoodController : MonoBehaviour
      if(other.tag == "Player")
      {
         FoodSpawn();
+        
+        AddScore();
 
-        score += 10f;
-        ScoreText.text = "Score: " + score;
+        
      }
  }
+  public static float GetScore()
+ {
+   return score;
+ }
+ public static float AddScore()
+ {
+   score += 10;
+   return score;
+ }
+ 
 }
+
 
  
