@@ -1,13 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodController : MonoBehaviour
 {
      public BoxCollider2D foodGrid;
+     public Text ScoreText;
+     private float score;
 
    private void Start()
    {
        FoodSpawn();
-   }
+       score = 0;
+       ScoreText.text = "Score: " + score;
+    }
    private void FoodSpawn()
  {
     Bounds bounds = this.foodGrid.bounds;
@@ -23,6 +28,9 @@ public class FoodController : MonoBehaviour
      if(other.tag == "Player")
      {
         FoodSpawn();
+
+        score += 10f;
+        ScoreText.text = "Score: " + score;
      }
  }
 }
