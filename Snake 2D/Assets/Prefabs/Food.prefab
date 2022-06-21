@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodGrid: {fileID: 0}
+  ScoreText: {fileID: 0}

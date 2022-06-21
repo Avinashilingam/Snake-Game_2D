@@ -1,10 +1,12 @@
+using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FoodController : MonoBehaviour
 {
      public BoxCollider2D foodGrid;
-     private   float score;
+     public Text ScoreText;
+     private  float score;
      
 
    
@@ -13,6 +15,7 @@ public class FoodController : MonoBehaviour
    {
        FoodSpawn();
        score = 0;
+       ScoreText.text = "Score: " + score;
        
     }
    private void FoodSpawn()
@@ -30,21 +33,17 @@ public class FoodController : MonoBehaviour
      if(other.tag == "Player")
      {
         FoodSpawn();
+
+        score += 10f;
+
+        ScoreText.text = "Score: " + score;
         
-        AddScore();
+        
 
         
      }
  }
-  public static float GetScore()
- {
-   return score;
- }
- public static float AddScore()
- {
-   score += 10;
-   return score;
- }
+ 
  
 }
 
