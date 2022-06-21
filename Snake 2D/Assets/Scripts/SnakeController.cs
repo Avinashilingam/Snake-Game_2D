@@ -201,7 +201,7 @@ public class SnakeController : MonoBehaviour
      if(other.tag == "Food")
      {
         Grow();
-        FoodController.AddScore();
+        
      }
 
    
