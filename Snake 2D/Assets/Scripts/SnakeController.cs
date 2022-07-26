@@ -197,13 +197,12 @@ public class SnakeController : MonoBehaviour
     } 
 
     private void OnTriggerEnter2D(Collider2D other)
- {
-     if(other.tag == "Food")
-     {
-        Grow();
-        
-     }
+    {
+        if (other.gameObject.CompareTag("Food"))
+        {
+            Grow();
+        }
 
-   
- }
+
+    }
 }

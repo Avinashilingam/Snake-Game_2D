@@ -29,22 +29,18 @@ public class FoodController : MonoBehaviour
  }
 
  private void OnTriggerEnter2D(Collider2D other)
- {
-     if(other.tag == "Player")
-     {
-        FoodSpawn();
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            FoodSpawn();
 
-        score += 10f;
+            score += 10f;
 
-        ScoreText.text = "Score: " + score;
-        
-        
+            ScoreText.text = "Score: " + score;
+        }
+    }
 
-        
-     }
- }
- 
- 
+
 }
 
 
