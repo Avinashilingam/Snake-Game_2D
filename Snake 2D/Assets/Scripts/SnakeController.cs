@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SnakeController : MonoBehaviour
 {
@@ -14,12 +15,14 @@ public class SnakeController : MonoBehaviour
 // Snake Parameters
     private State state;
     private Vector2 movementDir;
-    public Vector2 gridPosition;
+    private Vector2 gridPosition;
     private float gridMoveTimer;
     private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
     private FoodController foodController;
+    public GameObject deathUI;
+
    
    
 
@@ -156,19 +159,8 @@ public class SnakeController : MonoBehaviour
         {
             Body[i].position = Body[i-1].position;
         }
- //Snake Death
-        foreach (var body in Body)
-        {
-            Vector2 BpGridPosition = body.position;
-
-            if (gridPosition == BpGridPosition)
-            {
-                // GameOver
-                
-                Debug.Log("Dead");
-                state = State.Dead;
-            }
-        }
+      
+        SnakeDeath();
 
         transform.position = new Vector3(gridPosition.x,gridPosition.y);
         transform.eulerAngles = new Vector3(0,0,GetAngleFromVector(movementDir) -90);
@@ -204,5 +196,27 @@ public class SnakeController : MonoBehaviour
         }
 
 
+    }
+
+    //Snake Death
+    private void SnakeDeath()
+    {
+        foreach (var body in Body)
+        {
+            Vector2 BpGridPosition = body.position;
+
+            if (gridPosition == BpGridPosition)
+            {
+                // GameOver
+
+                Invoke("LoadDeathUI", 1f);
+                state = State.Dead;
+            }
+        }
+    }
+
+    public void LoadDeathUI()
+    {
+        deathUI.SetActive(true);
     }
 }
