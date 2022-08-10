@@ -37,7 +37,7 @@ public class SnakeController : MonoBehaviour
     private void Awake()
     {
         gridPosition = new Vector2(0f,0f);
-        gridMoveTimerMax = 0.25f;
+        gridMoveTimerMax = -1f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
         state = State.Alive;
