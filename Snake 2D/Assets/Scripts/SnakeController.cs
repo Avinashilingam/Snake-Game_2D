@@ -37,7 +37,7 @@ public class SnakeController : MonoBehaviour
     private void Awake()
     {
         gridPosition = new Vector2(0f,0f);
-        gridMoveTimerMax = -1f;
+        gridMoveTimerMax = 0.01f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
         state = State.Alive;
@@ -127,43 +127,29 @@ public class SnakeController : MonoBehaviour
     private void MovementHandler()
     {
         
-        gridMoveTimer += Time.deltaTime;
+        gridMoveTimer += Time.fixedDeltaTime;
 
         if(gridMoveTimer >= gridMoveTimerMax)
         {
            
             gridMoveTimer -= gridMoveTimerMax;
             gridPosition += movementDir;
-           //Screen wrapping 
-           //Horizontal wrap  
-             if(gridPosition.x == -19f)
-             {
-                gridPosition.x = 19f;
-             }
-             else if(gridPosition.x == 19f)
-             {
-                gridPosition.x = -19f;
-             }
+         //Screen wrapping functions to wrap snake around when out of camera's view 
+             WrapAroundHz();
+             WrapAroundVt();
 
-          //Vertical wrap
-             if(gridPosition.y == -16f)
-              {
-                gridPosition.y = 16f;
-              }
-             else if(gridPosition.y == 16f)
-             {
-                gridPosition.y = -16f;
-             }
+         // snake death function to cease movement and declare it dead
+             SnakeDeath();
+
+         // loop to make the snake segments follow and move along with snake's head
              
-           for(int i = Body.Count-1 ; i > 0 ;  i--)
-        {
-            Body[i].position = Body[i-1].position;
-        }
-      
-        SnakeDeath();
-
-        transform.position = new Vector3(gridPosition.x,gridPosition.y);
-        transform.eulerAngles = new Vector3(0,0,GetAngleFromVector(movementDir) -90);
+            for(int i = Body.Count-1 ; i > 0 ;  i--)
+             {
+               Body[i].position = Body[i-1].position;
+             }
+         // to move snake's head
+          transform.position = new Vector3(gridPosition.x,gridPosition.y);
+          transform.eulerAngles = new Vector3(0,0,GetAngleFromVector(movementDir) -90);
 
             
         }
@@ -182,6 +168,7 @@ public class SnakeController : MonoBehaviour
   // Snake Growth 
     private void Grow()
     {
+       
       Transform body = Instantiate(this.segmentPrefab);
       body.position = Body[Body.Count -1].position;
       Body.Add(body);
@@ -208,15 +195,41 @@ public class SnakeController : MonoBehaviour
             if (gridPosition == BpGridPosition)
             {
                 // GameOver
-
                 Invoke("LoadDeathUI", 1f);
                 state = State.Dead;
             }
         }
     }
-
+ 
+   //Gameover screen
     public void LoadDeathUI()
     {
         deathUI.SetActive(true);
+    }
+
+    private void WrapAroundHz()
+    {
+        //Horizontal wrap  
+             if(gridPosition.x == -19f)
+             {
+                gridPosition.x = 19f;
+             }
+             else if(gridPosition.x == 19f)
+             {
+                gridPosition.x = -19f;
+             }
+    }
+
+    private void WrapAroundVt()
+    {
+       //Vertical wrap
+             if(gridPosition.y == -16f)
+              {
+                gridPosition.y = 16f;
+              }
+             else if(gridPosition.y == 16f)
+             {
+                gridPosition.y = -16f;
+             }
     }
 }
