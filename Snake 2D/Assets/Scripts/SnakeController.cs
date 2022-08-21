@@ -86,38 +86,78 @@ public class SnakeController : MonoBehaviour
     // Snake Inputs
     private void InputHandler()
     {
-        if(Input.GetKeyDown(KeyCode.W))
-        {   
-            if(movementDir.y!= -1)
-            {
-             movementDir.x = 0f;
-             movementDir.y = +1f;
-            }
-        }
-         else if(Input.GetKeyDown(KeyCode.S))
+        if(gameObject.tag == "Player")
         {
-            if(movementDir.y!= +1)
-            {
-            movementDir.x = 0f;
-            movementDir.y = -1f;
+            if(Input.GetKeyDown(KeyCode.W))
+            {   
+                if(movementDir.y!= -1)
+                {
+                movementDir.x = 0f;
+                movementDir.y = +1f;
+                }
             }
-        }
-         else if(Input.GetKeyDown(KeyCode.A))
-        {
-            if(movementDir.x!= +1)
+            else if(Input.GetKeyDown(KeyCode.S))
             {
-             movementDir.x = -1f;
-             movementDir.y  = 0f;
+                if(movementDir.y!= +1)
+                {
+                movementDir.x = 0f;
+                movementDir.y = -1f;
+                }
             }
-        }
-         else if(Input.GetKeyDown(KeyCode.D))
-        {
-            if(movementDir.x!= -1)
+            else if(Input.GetKeyDown(KeyCode.A))
             {
-              movementDir.x = +1;
-              movementDir.y  = 0f;
+                if(movementDir.x!= +1)
+                {
+                movementDir.x = -1f;
+                movementDir.y  = 0f;
+                }
             }
+            else if(Input.GetKeyDown(KeyCode.D))
+            {
+                if(movementDir.x!= -1)
+                {
+                movementDir.x = +1;
+                movementDir.y  = 0f;
+                }
 
+            }
+        }
+
+        else if (gameObject.tag == "Player2")
+        {
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {   
+                if(movementDir.y!= -1)
+                {
+                movementDir.x = 0f;
+                movementDir.y = +1f;
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if(movementDir.y!= +1)
+                {
+                movementDir.x = 0f;
+                movementDir.y = -1f;
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if(movementDir.x!= +1)
+                {
+                movementDir.x = -1f;
+                movementDir.y  = 0f;
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if(movementDir.x!= -1)
+                {
+                movementDir.x = +1;
+                movementDir.y  = 0f;
+                }
+
+            }
         }
 
         

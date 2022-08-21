@@ -7,6 +7,7 @@ TagManager:
   - Food
   - Obstacle
   - Food_Spl
+  - Player2
   layers:
   - Default
   - TransparentFX
