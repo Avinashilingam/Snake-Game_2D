@@ -36,7 +36,7 @@ public class SnakeController : MonoBehaviour
     }
     private void Awake()
     {
-        gridPosition = new Vector2(0f,0f);
+        gridPosition = gameObject.transform.position;
         gridMoveTimerMax = 0.5f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
