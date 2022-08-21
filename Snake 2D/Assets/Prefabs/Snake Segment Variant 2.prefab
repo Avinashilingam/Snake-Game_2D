@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7516138310408305130
+--- !u!1001 &3770760028949231265
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1864183183057315397, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_Name
-      value: Snake Segment Variant
+      value: Snake Segment Variant 2
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315398, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_RootOrder
@@ -65,15 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315399, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_Color.b
-      value: 0.5647059
+      value: 0.07058824
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315399, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_Color.g
-      value: 0.101960786
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315399, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_Color.r
-      value: 0.18431373
+      value: 0.09411765
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1864183183201711787, guid: 2283f39a58483564894e598d5e84db88, type: 3}

@@ -6,17 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class DeathUIController : MonoBehaviour
 {
-    public Button RetryButton;
+    public GameObject deathUI;
 
 
-    private void Awake()
-    {
-        RetryButton.onClick.AddListener(ReloadScene);
-    }
-
+    
     public void ReloadScene()
     {
+        Time.timeScale = 1f;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex);
+        
     }
 }

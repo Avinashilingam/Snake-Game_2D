@@ -20,7 +20,7 @@ public class SnakeController : MonoBehaviour
     private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
-    private FoodController foodController;
+    
     public GameObject deathUI;
 
    
@@ -37,7 +37,7 @@ public class SnakeController : MonoBehaviour
     private void Awake()
     {
         gridPosition = new Vector2(0f,0f);
-        gridMoveTimerMax = 0.01f;
+        gridMoveTimerMax = 0.5f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
         state = State.Alive;
@@ -132,7 +132,7 @@ public class SnakeController : MonoBehaviour
         if(gridMoveTimer >= gridMoveTimerMax)
         {
            
-            gridMoveTimer -= gridMoveTimerMax;
+            gridMoveTimer = 0;
             gridPosition += movementDir;
          //Screen wrapping functions to wrap snake around when out of camera's view 
              WrapAroundHz();
@@ -166,7 +166,7 @@ public class SnakeController : MonoBehaviour
        return n;
    }
   // Snake Growth 
-    private void Grow()
+    public void Grow()
     {
        
       Transform body = Instantiate(this.segmentPrefab);
@@ -175,15 +175,20 @@ public class SnakeController : MonoBehaviour
       
     } 
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Shrink()
     {
-        if (other.gameObject.CompareTag("Food"))
+        if(Body.Count > 3)
         {
-            Grow();
+             Destroy(Body[Body.Count - 1].gameObject);
+            Body.RemoveAt(Body.Count - 1);
         }
-
-
+        else
+        {
+             SnakeDeath();
+        }
     }
+
+    
 
     //Snake Death
     private void SnakeDeath()
@@ -197,6 +202,7 @@ public class SnakeController : MonoBehaviour
                 // GameOver
                 Invoke("LoadDeathUI", 1f);
                 state = State.Dead;
+                
             }
         }
     }
@@ -205,6 +211,7 @@ public class SnakeController : MonoBehaviour
     public void LoadDeathUI()
     {
         deathUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     private void WrapAroundHz()
