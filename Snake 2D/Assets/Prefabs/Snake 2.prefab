@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 666190206996921330}
   - component: {fileID: 1216007962243816239}
   - component: {fileID: 1216007963661798747}
+  - component: {fileID: 1216007963706630898}
   m_Layer: 0
   m_Name: Snake 2
-  m_TagString: Player
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.09411765, g: 1, b: 0.07058824, a: 1}
   m_FlipX: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c871d149174fa654a9d01e90ca575bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentPrefab: {fileID: 0}
+  segmentPrefab: {fileID: 3281583708211106023, guid: a1dd527f51e1ed74faa7b4b375415946, type: 3}
   deathUI: {fileID: 0}
 --- !u!114 &1216007962243816239
 MonoBehaviour:
@@ -176,3 +177,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   growthFoodScore: 10
+--- !u!114 &1216007963706630898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666190207124040476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93a82b073f17ff4ba0764c67d312c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupTime: 20

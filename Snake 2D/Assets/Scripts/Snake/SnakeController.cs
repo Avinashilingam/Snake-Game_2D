@@ -41,10 +41,6 @@ public class SnakeController : MonoBehaviour
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
         state = State.Alive;
-        
-        
-        
-        
     }
 
    
@@ -61,8 +57,6 @@ public class SnakeController : MonoBehaviour
             break;
      }
      
-       
-      
     }
     //FixedUpdate
     private void FixedUpdate()
@@ -76,10 +70,6 @@ public class SnakeController : MonoBehaviour
           break;
 
        }
-
-       
-        
-        
     }
         
        
@@ -159,9 +149,6 @@ public class SnakeController : MonoBehaviour
 
             }
         }
-
-        
-    
     }
   // Snake Movement
     private void MovementHandler()
@@ -193,14 +180,12 @@ public class SnakeController : MonoBehaviour
 
             
         }
-         
-   
-      
     }
 
   // Snake Rotation
 
-   private float GetAngleFromVector(Vector2 dir){
+   private float GetAngleFromVector(Vector2 dir)
+   {
        float n = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
        if(n<0) n += 360;
        return n;
@@ -280,3 +265,4 @@ public class SnakeController : MonoBehaviour
              }
     }
 }
+

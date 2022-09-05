@@ -8,11 +8,12 @@ TagManager:
   - Obstacle
   - Food_Spl
   - Player2
+  - Powerup
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PowerUp
   - Water
   - UI
   - 

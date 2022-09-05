@@ -32,21 +32,6 @@ public class FoodCollection : MonoBehaviour
             snakeController.Shrink();
             Destroy(collision.gameObject);
         }
-
-
     }
   
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

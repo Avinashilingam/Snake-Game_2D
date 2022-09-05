@@ -22,11 +22,11 @@ public class ScoreController : MonoBehaviour
         scoreText.text = "Score:" + score;
     }
 
-    public void SetScoreForGainer(int score)
+    public void SetScoreForGrowthFood(int score)
     {
         growthFoodScore = score;
     }
-    public int GetScoreForGainer()
+    public int GetScoreForGrowthFood()
     {
         return growthFoodScore;
     }
