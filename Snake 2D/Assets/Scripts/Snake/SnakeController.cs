@@ -17,17 +17,16 @@ public class SnakeController : MonoBehaviour
     private Vector2 movementDir;
     private Vector2 gridPosition;
     private float gridMoveTimer;
-    private float gridMoveTimerMax;
+   [SerializeField] private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
     
     public GameObject deathUI;
 
-   
-   
+    private float speed = 1f;
 
-    
-    private void Start()
+    bool isDead = true;
+   private void Start()
     {
         Body = new List<Transform>();
         Body.Add(this.transform);
@@ -37,11 +36,28 @@ public class SnakeController : MonoBehaviour
     private void Awake()
     {
         gridPosition = gameObject.transform.position;
-        gridMoveTimerMax = 0.5f;
         gridMoveTimer = gridMoveTimerMax;
         movementDir = new Vector2 (1f,0f);
         state = State.Alive;
     }
+
+    // IsDead
+
+    public void SetISDead(bool value)
+    {
+        isDead = value;
+    }
+
+    // Speed
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public void SetSpeed( float _speed)
+    {
+        speed = _speed;
+    }
+
 
    
    //Update
@@ -54,6 +70,7 @@ public class SnakeController : MonoBehaviour
          InputHandler();
             break;
         case State.Dead:
+          
             break;
      }
      
@@ -67,6 +84,7 @@ public class SnakeController : MonoBehaviour
          MovementHandler();
           break;
         case State.Dead:
+        
           break;
 
        }
@@ -158,9 +176,8 @@ public class SnakeController : MonoBehaviour
 
         if(gridMoveTimer >= gridMoveTimerMax)
         {
-           
-            gridMoveTimer = 0;
-            gridPosition += movementDir;
+            gridPosition += movementDir*speed;
+            gridMoveTimer = gridMoveTimerMax;
          //Screen wrapping functions to wrap snake around when out of camera's view 
              WrapAroundHz();
              WrapAroundVt();
@@ -222,7 +239,7 @@ public class SnakeController : MonoBehaviour
         {
             Vector2 BpGridPosition = body.position;
 
-            if (gridPosition == BpGridPosition)
+            if (gridPosition == BpGridPosition && isDead == true)
             {
                 // GameOver
                 Invoke("LoadDeathUI", 1f);
@@ -237,6 +254,7 @@ public class SnakeController : MonoBehaviour
     {
         deathUI.SetActive(true);
         Time.timeScale = 0f;
+        
     }
 
     private void WrapAroundHz()

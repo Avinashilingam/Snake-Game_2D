@@ -9,6 +9,8 @@ TagManager:
   - Food_Spl
   - Player2
   - Powerup
+  - Powerup_2
+  - PowerUp_3
   layers:
   - Default
   - TransparentFX
