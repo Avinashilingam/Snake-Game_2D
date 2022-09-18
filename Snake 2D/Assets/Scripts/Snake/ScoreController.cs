@@ -11,7 +11,7 @@ public class ScoreController : MonoBehaviour
     private void Start()
     {
         score = 0;
-        scoreText.text = "Score:"+ score;
+        
     }
 
     [SerializeField] int growthFoodScore;
