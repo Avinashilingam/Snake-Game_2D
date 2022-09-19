@@ -30,7 +30,7 @@ public class PowerUp : MonoBehaviour
            else if(collision.gameObject.tag == "Powerup_2")
             {
                 speed = snakeController.GetSpeed();
-                snakeController.SetSpeed(speed*5f);
+                snakeController.SetSpeed(speed * 2f);
                 Invoke("ResetSpeed",powerupTime);
                 Destroy(collision.gameObject);
                 
