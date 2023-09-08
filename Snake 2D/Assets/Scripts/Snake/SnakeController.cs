@@ -20,29 +20,29 @@ public class SnakeController : MonoBehaviour
    [SerializeField] private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
+    public BoxCollider2D levelBound;
     
     public GameObject deathUI;
 
     private float speed = 1f;
 
     bool isDead = true;
-   private void Start()
+    private void Start()
     {
         Body = new List<Transform>();
-        Body.Add(this.transform);
-        
-        
+        Body.Add(this.transform);  
     }
+
+    
     private void Awake()
     {
         gridPosition = gameObject.transform.position;
         gridMoveTimer = gridMoveTimerMax;
-        movementDir = new Vector2 (1f,0f);
+        movementDir = new Vector2 (1f,0f);//setting the movement direction to 1 on x axis
         state = State.Alive;
     }
 
     // IsDead
-
     public void SetISDead(bool value)
     {
         isDead = value;
@@ -58,11 +58,8 @@ public class SnakeController : MonoBehaviour
         speed = _speed;
     }
 
-
-   
    //Update
-   private void Update()
-
+    private void Update()
     {
      switch (state)
      {
@@ -73,7 +70,6 @@ public class SnakeController : MonoBehaviour
           
             break;
      }
-     
     }
     //FixedUpdate
     private void FixedUpdate()
@@ -171,42 +167,35 @@ public class SnakeController : MonoBehaviour
   // Snake Movement
     private void MovementHandler()
     {
-        
         gridMoveTimer += Time.fixedDeltaTime;
 
         if(gridMoveTimer >= gridMoveTimerMax)
         {
             gridPosition += movementDir*speed;
             gridMoveTimer = gridMoveTimerMax;
-         //Screen wrapping functions to wrap snake around when out of camera's view 
-             WrapAroundHz();
-             WrapAroundVt();
-
+        
          // snake death function to cease movement and declare it dead
              SnakeDeath();
 
          // loop to make the snake segments follow and move along with snake's head
              
             for(int i = Body.Count-1 ; i > 0 ;  i--)
-             {
+            {
                Body[i].position = Body[i-1].position;
-             }
+            }
          // to move snake's head
           transform.position = new Vector3(gridPosition.x,gridPosition.y);
           transform.eulerAngles = new Vector3(0,0,GetAngleFromVector(movementDir) -90);
-
-            
         }
     }
 
   // Snake Rotation
-
-   private float GetAngleFromVector(Vector2 dir)
-   {
+    private float GetAngleFromVector(Vector2 dir)
+    {
        float n = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
        if(n<0) n += 360;
        return n;
-   }
+    }
   // Snake Growth 
     public void Grow()
     {
@@ -216,12 +205,12 @@ public class SnakeController : MonoBehaviour
       Body.Add(body);
       
     } 
-
+  // Snake Shrink
     public void Shrink()
     {
         if(Body.Count > 3)
         {
-             Destroy(Body[Body.Count - 1].gameObject);
+            Destroy(Body[Body.Count - 1].gameObject);
             Body.RemoveAt(Body.Count - 1);
         }
         else
@@ -229,15 +218,13 @@ public class SnakeController : MonoBehaviour
              SnakeDeath();
         }
     }
-
-    
-
-    //Snake Death
+  //Snake Death
     private void SnakeDeath()
     {
         foreach (var body in Body)
         {
             Vector2 BpGridPosition = body.position;
+            isDead = true;
 
             if (gridPosition == BpGridPosition && isDead == true)
             {
@@ -257,30 +244,6 @@ public class SnakeController : MonoBehaviour
         
     }
 
-    private void WrapAroundHz()
-    {
-        //Horizontal wrap  
-             if(gridPosition.x == -19f)
-             {
-                gridPosition.x = 19f;
-             }
-             else if(gridPosition.x == 19f)
-             {
-                gridPosition.x = -19f;
-             }
-    }
 
-    private void WrapAroundVt()
-    {
-       //Vertical wrap
-             if(gridPosition.y == -16f)
-              {
-                gridPosition.y = 16f;
-              }
-             else if(gridPosition.y == 16f)
-             {
-                gridPosition.y = -16f;
-             }
-    }
 }
 
