@@ -206,32 +206,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &118187253
-BoxCollider2D:
+--- !u!114 &118187253
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118187252}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0011225939, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.3218825, y: 1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01544715987ca547a215592495ed513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 0
+  width: 0
 --- !u!4 &118187255
 Transform:
   m_ObjectHideFlags: 0
@@ -594,7 +582,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2047,6 +2035,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 666190206996921330, guid: 1840685f46326524190fa476f90d5563, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 118187253}
+    - target: {fileID: 666190206996921330, guid: 1840685f46326524190fa476f90d5563, type: 3}
       propertyPath: deathUI
       value: 
       objectReference: {fileID: 1414371834}
@@ -2057,6 +2049,14 @@ PrefabInstance:
     - target: {fileID: 666190207124040479, guid: 1840685f46326524190fa476f90d5563, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 666190207124040479, guid: 1840685f46326524190fa476f90d5563, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 666190207124040479, guid: 1840685f46326524190fa476f90d5563, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 666190207124040479, guid: 1840685f46326524190fa476f90d5563, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2102,10 +2102,6 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1879959224}
-    - target: {fileID: 1216007963706630898, guid: 1840685f46326524190fa476f90d5563, type: 3}
-      propertyPath: powerupTime
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1840685f46326524190fa476f90d5563, type: 3}
 --- !u!1001 &1864183183201711785
@@ -2121,6 +2117,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315398, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864183183057315398, guid: 2283f39a58483564894e598d5e84db88, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864183183057315398, guid: 2283f39a58483564894e598d5e84db88, type: 3}
+      propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183057315398, guid: 2283f39a58483564894e598d5e84db88, type: 3}
@@ -2164,20 +2168,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1864183183201711787, guid: 2283f39a58483564894e598d5e84db88, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 118187253}
+    - target: {fileID: 1864183183201711787, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: deathUI
       value: 
       objectReference: {fileID: 1414371834}
-    - target: {fileID: 1864183183201711787, guid: 2283f39a58483564894e598d5e84db88, type: 3}
-      propertyPath: gridMoveTimerMax
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4091230501009052735, guid: 2283f39a58483564894e598d5e84db88, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1689214161}
-    - target: {fileID: 8528952201469504328, guid: 2283f39a58483564894e598d5e84db88, type: 3}
-      propertyPath: powerupTime
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2283f39a58483564894e598d5e84db88, type: 3}

@@ -147,7 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c871d149174fa654a9d01e90ca575bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0}
+  gridMoveTimerMax: 2
   segmentPrefab: {fileID: 8183118875969462188, guid: 3880303443bc162468de6ce6255b8b7e, type: 3}
+  level: {fileID: 0}
   deathUI: {fileID: 0}
 --- !u!114 &1468880502
 MonoBehaviour:
@@ -189,4 +192,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93a82b073f17ff4ba0764c67d312c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupTime: 20
+  powerupTime: 5

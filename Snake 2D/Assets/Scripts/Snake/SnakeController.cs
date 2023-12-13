@@ -15,12 +15,12 @@ public class SnakeController : MonoBehaviour
 // Snake Parameters
     private State state;
     private Vector2 movementDir;
-    private Vector2 gridPosition;
+    public Vector2 gridPosition;
     private float gridMoveTimer;
    [SerializeField] private float gridMoveTimerMax;
     private List<Transform> Body;
     public Transform segmentPrefab;
-    public BoxCollider2D levelBound;
+    [SerializeField] private LevelWrap  level;
     
     public GameObject deathUI;
 
@@ -78,6 +78,7 @@ public class SnakeController : MonoBehaviour
        {
         case State.Alive:
          MovementHandler();
+         ScreenWrapHzt();
           break;
         case State.Dead:
         
@@ -88,6 +89,7 @@ public class SnakeController : MonoBehaviour
         
        
     // Snake Inputs
+      //Player 1
     private void InputHandler()
     {
         if(gameObject.tag == "Player")
@@ -126,7 +128,7 @@ public class SnakeController : MonoBehaviour
 
             }
         }
-
+        // Player 2
         else if (gameObject.tag == "Player2")
         {
             if(Input.GetKeyDown(KeyCode.UpArrow))
@@ -242,6 +244,30 @@ public class SnakeController : MonoBehaviour
         deathUI.SetActive(true);
         Time.timeScale = 0f;
         
+    }
+
+    private void ScreenWrapHzt()
+    {
+        if (gridPosition.x > level.width)
+        {
+            gridPosition.x = -level.width;
+        }
+        else if (gridPosition.x < -level.width)
+        {
+            gridPosition.x = level.width;
+        }
+    }
+
+    private void ScreenWrapVrt()
+    {
+        if ( gridPosition.y > level.height)
+        {
+            gridPosition.y = -level.height;
+        }
+       else if( gridPosition.y < - level.height)
+       {
+            gridPosition.y = level.height;
+       }
     }
 
 
